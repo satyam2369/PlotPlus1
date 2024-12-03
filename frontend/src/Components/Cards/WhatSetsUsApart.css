@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap");
+
+
+.feature_section {
+  margin-top: 24vh;
+  text-align: center;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.073), rgba(255, 255, 255, 0.021));
+}
+
+.feature_heading {
+  
+  text-align: center;
+  font-size: 2.4em;
+  margin-bottom: 6vh;
+  /* padding-top: 6vh; */
+  color: #fff;
+  /* font-family: "Merriweather Sans", sans-serif; */
+  font-family: "Alegreya", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.what-sets-us-apart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 12vh;
+  text-align: center;
+}
+
+.generate-story {
+  /* opacity: 0.9; */
+}
+
+.feature-char {
+  filter: brightness(86%); 
+}
+
+.feature {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.301);
+  margin-top: 0;
+  text-align: center;
+  min-width: 300px;
+  /* height: 62vh; */
+  transition: transform 0.3s ease-in-out;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+.feature img {
+  height: 30vh;
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+}
+
+.feature h2 {
+  color: #333;
+  margin: 10px 0;
+}
+
+.feature p {
+  color: #666;
+  line-height: 1.6em;
+  padding: 0 2vw;
+}
+
+.feature_links {
+  display: inline-block;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  position: relative; 
+}
+
+.feature_links:hover {
+  background: linear-gradient(45deg, #291100, #000000); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature_links:hover::before {
+  top: 100%;
+  left: -100%;
+}
+
+
+
+
+
+@media (max-width: 2500px) {
+  .what-sets-us-apart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature {
+    width: 24vw;
+    height: auto;
+    margin: 0 2vw;
+    margin: 1vh 1.5vw;
+    border-radius: 2px;
+    /* padding: 24px; */
+  }
+  .feature_heading {
+    font-size: 2.4rem;
+  }
+  .feature h2 {
+    font-size: 1.5rem;
+  }
+  .feature p {
+    font-size: 0.9rem;
+  }
+  .feature_links {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .what-sets-us-apart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature {
+    width: 24vw;
+    height: auto;
+    margin: 0 2vw;
+    /* padding: 20px; */
+  }
+  .feature_heading {
+    font-size: 2rem;
+  }
+  .feature h2 {
+    font-size: 1.4rem;
+  }
+  .feature p {
+    font-size: 0.9rem;
+  }
+  .feature_links {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .what-sets-us-apart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .feature {
+    width: 560px;
+    height: auto;
+    margin: 20px;
+    /* padding: 40px; */
+  }
+  .feature_heading {
+    font-size: 2.4rem;
+  }
+  .feature h2 {
+    font-size: 1.8rem;
+  }
+  .feature p {
+    font-size: 1.2rem;
+  }
+  .feature_links {
+    font-size: 1.4rem;
+  }
+}
+
+/* Responsive design for medium screens */
+@media (max-width: 768px) {
+  .feature_section {
+    /* margin-top: -1vh; */
+  }
+  .what-sets-us-apart {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin-top: -20vh; */
+  }
+  .feature {
+    width: 500px;
+    height: auto;
+    margin: 20px;
+    /* padding: 30px; */
+  }
+  .feature_heading {
+    font-size: 2.2rem;
+  }
+  .feature h2 {
+    font-size: 1.8rem;
+  }
+  .feature p {
+    font-size: 1.2rem;
+  }
+  .feature_links {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature {
+    width: 80%;
+    margin: 4vh 4vw 0;
+    /* padding: 20px; */
+  }
+  .feature_heading {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
+  .feature img {
+    height: 27vh;
+  }
+  .feature h2 {
+    font-size: 1rem;
+  }
+  .feature p {
+    font-size: 0.7rem;
+  }
+  .feature_links {
+    font-size: 0.7rem;
+  }
+}

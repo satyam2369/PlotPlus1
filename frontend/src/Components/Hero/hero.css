@@ -1,0 +1,164 @@
+.Hero {
+    position: relative;
+    color: white;
+    z-index: 3;
+}
+
+.hero_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20vh 8vw 0 8vw;
+    /* max-width: 90vw; */
+    position: relative;
+    z-index: 3;
+}
+
+.hero_heading, .hero_subtitle {
+    font-family: "Alegreya", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    padding: 2vh 2vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.hero_heading {
+    font-size: 2.2em; 
+    word-spacing: 2px; 
+    /* letter-spacing: 2px; */
+}
+
+.hero_subtitle {
+    font-size: 1.4em; /* Adjusted for responsiveness */
+}
+
+.hero_links {
+    display: flex;
+    justify-content: center;
+}
+
+.feature-link {
+    text-align: center;
+    margin: 0 1vw;
+    padding: 1.4vh 1.6vw;
+    border: 2px solid rgba(255, 255, 255, 0.84);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2.3vh;
+    font-weight: 500; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Montserrat', sans-serif; /* Added a modern sans-serif font */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(4px); /* Added blur effect to the background */
+    /* font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-style: normal; */
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.feature-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.324);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.feature-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero_container {
+        padding: 24vh 10vw 0;
+    }
+    .hero_heading {
+        font-size: 1.8em;
+    }
+
+    .hero_subtitle {
+        font-size: 1.2em;
+    }
+
+    .feature-link {
+        padding: 8px 16px;
+        margin: 0 0.5vw;
+        font-size: 1.8vh;
+    }
+}
+@media (max-width: 990px) {
+    .hero_container {
+        padding: 26vh 10vw 0;
+    }
+    .hero_heading {
+        font-size: 2.4em;
+    }
+
+    .hero_subtitle {
+        font-size: 1.9em;
+    }
+
+    .feature-link {
+        padding: 8px 16px;
+        margin: 0 0.5vw;
+        font-size: 1.8vh;
+    }
+}
+@media (max-width: 780px) {
+    .hero_container {
+        padding: 26vh 10vw 0;
+    }
+    .hero_heading {
+        font-size: 2em;
+    }
+
+    .hero_subtitle {
+        font-size: 1.5em;
+    }
+
+    .feature-link {
+        padding: 8px 16px;
+        margin: 0 0.5vw;
+        font-size: 1.8vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero_container {
+        padding: 14vh 10vw 0;
+    }
+    .hero_heading {
+        font-size: 1.4em;
+    }
+
+    .hero_subtitle {
+        font-size: 1.1em;
+    }
+
+    .hero_links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .feature-link {
+        font-size: 1.8vh;
+        padding: 6px 12px;
+        margin: 1vh 2vw;
+    }
+}
