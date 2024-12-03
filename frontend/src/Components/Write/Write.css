@@ -1,0 +1,258 @@
+.write_popup {
+  margin-top: 0;
+  /* background-color: #0000008f; */
+}
+
+
+.write-page {
+  max-width: 100%;
+  margin: 1vh auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* .page-title {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+} */
+
+.write-cover-image {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+.write-cover-image label{
+  margin-right: 2vw;
+  padding-top: 2%;
+}
+
+.custom-upload-button {
+  display: inline-block;
+  height: fit-content;
+  padding: 12px 20px;
+  background-color: #0056d6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.custom-upload-button:hover {
+  background-color: #0042aa;
+}
+
+input[type="file"] {
+  display: none; /* Hide the actual file input */
+}
+
+.upload-icon {
+  margin-right: 8px;
+}
+
+.write-cover-image-preview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.write-cover-image-preview img {
+  max-width: 100px;
+  margin-bottom: 1vh;
+  margin-right: 4%;
+}
+
+.write-cover-image-preview button {
+  background-color: #ff4d4d; /* Red color for the remove button */
+  color: white;
+  border: none;
+  /* padding: 8px 12px; */
+  padding: 12px 20px;
+  margin-top: -2%;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.write-cover-image-preview button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+
+.write-page-form {
+  /* margin: 20% 0; */
+}
+
+.write-label {
+  font-size: 1.1rem;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.write-input {
+  width: 86%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.write-input:focus {
+  border-color: #0056d6;
+  outline: none;
+}
+
+.write-input-category {
+  border-style: none;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.parent-author-category {
+  display: flex;
+  flex-wrap: wrap;
+}
+.author-category-div1 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.author-category-div2 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+
+button[type="submit"] {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 20px;
+  background-color: #0056d6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0042aa;
+}
+
+.tiny-mce-editor {
+  margin-top: 20px;
+}
+
+.react-select__control {
+  border-style: none;
+}
+
+.react-select__control:hover {
+  border-color: #0056d6;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.popup-inner {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.popup-inner h2 {
+  margin-bottom: 20px;
+}
+
+.popup-inner button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .write-page {
+    max-width: 100%;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  button[type="submit"] {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .write-page {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .write-input, .write-input-category {
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.9rem;
+  }
+
+  .parent-author-category {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,68 @@
+.container-category {
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.bg {
+    position: fixed;
+    z-index: -1;
+    margin-top: -5vh;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.92;
+}
+.categ_heading {
+    font-size: 1.5em;
+    /* font-family: 'Caveat', cursive;
+font-family: 'Caveat Brush', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Encode Sans', sans-serif;
+font-family: 'Lemon', serif; */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin: 4vh;
+    font-size:6vh;
+    font-weight: 100;
+    color: white;
+}
+
+/* .cat_section {
+    display: flex;
+    height: 55vh;
+    width: 42vh;
+} */
+
+.category_page {
+    display: flex;
+    justify-content: space-around;
+    margin: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cat_page img{
+    width: 42vh;
+    height: 28vh;
+    border-radius: 10px 10px 0px 0px;
+}
+
+/* .cat_title {
+    margin-top: 1.2vh;
+    
+    font-size: 25px;
+    width: 40px; 
+    height: 40px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+} */
+
+/* .cat_des {
+    color: white;
+    font-size: 14px;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+} */

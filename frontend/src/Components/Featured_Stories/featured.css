@@ -1,0 +1,45 @@
+.Featured {
+    padding: 20px;
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.tales {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.rec-arrow {
+    background-color: #333;
+    border: none;
+    color: #f5f5f5;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rec-arrow:hover {
+    background-color: #555;
+}
+
+.rec-pagination {
+    margin-top: 20px;
+}
+
+.rec-dot {
+    background-color: #555;
+    border: none;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rec-dot_active {
+    background-color: #e0e0e0;
+}
