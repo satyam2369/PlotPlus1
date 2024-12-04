@@ -1,6 +1,8 @@
 .admin-dashboard {
     text-align: center;
     padding: 20px;
+    /* background-color: #f0efef; */
+    /* max-height: 100%; */
 }
 
 .options {
@@ -32,22 +34,7 @@
     color: #4CAF50; /* Color of active tab */
 }
 
-.popup-admin {
-    position: fixed; /* Make the popup fixed so it stays in view */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust width to fit your design */
-    max-width: 600px; /* Optional: Limit the maximum width */
-    max-height: 80vh; /* Limit the height to 80% of the viewport */
-    overflow-y: auto; /* Enable vertical scrolling when the content overflows */
-    background-color: white; /* Background color */
-    padding: 20px; /* Add some padding */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow for a 3D effect */
-    z-index: 1000; /* Ensure it appears above other elements */
 
-}
 
 .popup-content-admin {
     max-height: 100%; /* Ensure the content is constrained to the popup height */
@@ -98,26 +85,6 @@
 }
 
 
-.popup-story-details {
-    position: fixed; /* Make the popup fixed so it stays in view */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust width to fit your design */
-    max-width: 600px; /* Optional: Limit the maximum width */
-    max-height: 80vh; /* Limit the height to 80% of the viewport */
-    overflow-y: auto; /* Enable vertical scrolling when the content overflows */
-    background-color: white; /* Background color */
-    padding: 20px; /* Add some padding */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow for a 3D effect */
-    z-index: 1000; /* Ensure it appears above other elements */
-}
-
-.popup-content-story-details {
-    max-height: 100%; /* Ensure the content is constrained to the popup height */
-    overflow-y: auto; /* Add scrollability within the content */
-}
 
 .close-btn {
     display: inline-block;
@@ -213,4 +180,148 @@
     .search-sort-filter select {
         margin: 5px 0; /* Margin for elements in mobile view */
     }
+}
+
+
+.popup-admin {
+    position: relative; /* Static positioning */
+    margin: 20px auto; /* Center horizontally with auto margins */
+    width: 100%; /* Take the full width of the container */
+    max-width: 1200px; /* Optional: Set a max width for better layout */
+    background-color: white; /* Background color */
+    padding: 20px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.26); 
+    overflow: hidden; /* Ensure no content leaks outside */
+}
+
+.popup-content-admin {
+    max-height: none; /* Remove any height restrictions */
+    overflow-y: auto; /* Enable scrolling only if content overflows */
+    margin: 0 auto; /* Center the content */
+}
+
+.search-sort-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #484848;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(59, 59, 59, 0.1);
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.search-sort-filter input,
+.search-sort-filter button,
+.search-sort-filter select {
+    margin: 5px;
+}
+
+.options button.active {
+    background-color: #484848; /* Change the background color to green */
+    color: white; /* Change text color to white */
+    border-bottom: 3px solid #2e2e2e; /* Change the active tab border color */
+}
+
+
+
+/* For better mobile responsiveness */
+@media (max-width: 768px) {
+    .popup-admin {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .search-sort-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+.detail-data-parent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1000; /* Ensure it appears above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+/* Popup styling */
+.popup-story-details {
+    position: relative;
+    background-color: white; /* White background for the popup */
+    width: 60%; /* Set width to fit your design */
+    max-width: 600px; /* Prevent the popup from becoming too wide */
+    max-height: 80vh; /* Limit the height of the popup */
+    overflow-y: auto; /* Allow scrolling when content overflows */
+    padding: 20px; /* Padding inside the popup */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow for a floating effect */
+    animation: popupFadeIn 0.5s ease-out; /* Smooth popup entrance animation */
+}
+
+/* Close button styling */
+.close-btn {
+    background-color: #f44336; /* Red background for close button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Darker red when hovered */
+}
+
+/* Popup content styling */
+.popup-content-story-details {
+    max-height: 70vh; /* Limit the content height */
+    overflow-y: auto; /* Enable scrolling if content is too long */
+}
+
+.space-before-author {
+    margin-right: 15px; 
+  }
+  
+  .author {
+    font-style: italic; 
+    font-size: 1.6vh;
+  }
+
+  .tilde {
+    font-size: 1.2em; 
+    margin-left: 5px; 
+  }
+/* Popup entrance animation */
+@keyframes popupFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Optional: Custom styling for the content inside */
+.popup-content-story-details img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
