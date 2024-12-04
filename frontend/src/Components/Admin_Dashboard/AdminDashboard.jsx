@@ -3,7 +3,8 @@ import './AdminDashboard.css'; // Add custom styles for the dashboard and popups
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
-    const [popupType, setPopupType] = useState(null);
+    const [popupType, setPopupType] = useState("stories");
+    const [activeTab, setActiveTab] = useState(null);
     const [data, setData] = useState([]);
     const [detailData, setDetailData] = useState(null); // State to hold detail data
     const [searchQuery, setSearchQuery] = useState(''); // Search query
@@ -34,28 +35,39 @@ const AdminDashboard = () => {
         }
     };
 
+     // Fetch data for the default tab on mount
+  useEffect(() => {
+    fetchData(popupType);
+  }, [popupType]);
+
     // Function to handle deletion based on type
     const handleDelete = async (id, type) => {
-        try {
-            let response;
-            if (type === 'stories') {
-                response = await fetch(`http://localhost:4000/story/delete/${id}`, { method: 'DELETE' });
-            } else if (type === 'characters') {
-                response = await fetch(`http://localhost:4000/character/delete/${id}`, { method: 'DELETE' });
-            } else if (type === 'users') {
-                response = await fetch(`http://localhost:4000/users/delete/${id}`, { method: 'DELETE' });
+        // Ask for confirmation before deleting
+        const confirmed = window.confirm(`Are you sure you want to delete this ${type.slice(0, -1)}?`);
+    
+        if (confirmed) {
+            try {
+                let response;
+                if (type === 'stories') {
+                    response = await fetch(`http://localhost:4000/story/delete/${id}`, { method: 'DELETE' });
+                } else if (type === 'characters') {
+                    response = await fetch(`http://localhost:4000/character/delete/${id}`, { method: 'DELETE' });
+                } else if (type === 'users') {
+                    response = await fetch(`http://localhost:4000/users/delete/${id}`, { method: 'DELETE' });
+                }
+    
+                if (response.ok) {
+                    // After deletion, refetch the data to refresh the list
+                    fetchData(type);
+                } else {
+                    throw new Error('Delete operation failed');
+                }
+            } catch (error) {
+                console.error(`Error deleting ${type}:`, error);
             }
-
-            if (response.ok) {
-                // After deletion, refetch the data to refresh the list
-                fetchData(type);
-            } else {
-                throw new Error('Delete operation failed');
-            }
-        } catch (error) {
-            console.error(`Error deleting ${type}:`, error);
         }
     };
+    
 
     // Function to fetch detail data based on the type and id
     const fetchDetailData = async (id, type) => {
@@ -104,15 +116,32 @@ const AdminDashboard = () => {
         setFilterCriteria(e.target.value);
     };
 
+    
+
     const filteredData = data.filter((item) => {
-        const searchField = popupType === 'stories' ? item.title : popupType === 'characters' ? item.name : item.email;
-        return searchField.toLowerCase().includes(searchQuery.toLowerCase());
+        // Check search field based on popup type
+        const searchField = popupType === 'stories' 
+            ? item.title.toLowerCase() // Search by title for stories
+            : popupType === 'characters' 
+            ? item.name.toLowerCase() // Search by name for characters
+            : item.email.toLowerCase(); // Search by email for users
+    
+        // Check if the search field contains the search query
+        return searchField.includes(searchQuery.toLowerCase()) || 
+               (popupType === 'stories' && item.author.toLowerCase().includes(searchQuery.toLowerCase())); // Include author in search for stories
     });
+    
     
 
     // Handle button click to open the popup
     const handlePopupOpen = (type) => {
+
+        setPopupType(null);
+        setData([]);
+        setDetailData(null);
+
         setPopupType(type);
+        setActiveTab(type);
         fetchData(type);
     };
 
@@ -132,9 +161,15 @@ const AdminDashboard = () => {
         <div className="admin-dashboard">
             <h1>Admin Dashboard</h1>
             <div className="options">
-                <button onClick={() => handlePopupOpen('stories')}>Show All Stories</button>
-                <button onClick={() => handlePopupOpen('characters')}>Show All Characters</button>
-                <button onClick={() => handlePopupOpen('users')}>Show All Users</button>
+                <button  
+                className={activeTab === 'stories' ? 'active' : ''}
+                onClick={() => handlePopupOpen('stories')}>Show All Stories</button>
+                <button 
+                className={activeTab === 'characters' ? 'active' : ''}
+                onClick={() => handlePopupOpen('characters')}>Show All Characters</button>
+                <button 
+                className={activeTab === 'users' ? 'active' : ''}
+                onClick={() => handlePopupOpen('users')}>Show All Users</button>
             </div>
 
               {/* Search and sort options */}
@@ -159,22 +194,36 @@ const AdminDashboard = () => {
                     <button onClick={handleSort}>Sort {sortOrder === 'asc' ? '▲' : '▼'}</button>
 
                     {/* Optional filter */}
-                    {popupType === 'stories' && (
+                    {/* {popupType === 'stories' && (
                         <select value={filterCriteria} onChange={handleFilterChange}>
-                            <option value="">All Genres</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="Thriller">Thriller</option>
-                            <option value="Romance">Romance</option>
-                            {/* Add more filter options */}
+                        //     <option value="">All Genres</option>
+                        //     <option value="Fantasy">Fantasy</option>
+                        //     <option value="Thriller">Thriller</option>
+                        //     <option value="Romance">Romance</option>
                         </select>
-                    )}
+                    )} */}
                 </div>
-                        <button className="close-btn" onClick={handlePopupClose}>Close</button>
+                        {/* <button className="close-btn" onClick={handlePopupClose}>Close</button> */}
                         <ul className="popup-list">
                             {filteredData.length > 0 ? (
                                 filteredData.map((item) => (
-                                    <li key={item._id} onClick={() => handleItemClick(item._id, popupType)}>
-                                        {popupType === 'stories' ? item.title : popupType === 'characters' ? item.name : item.email}
+                                    <li key={item._id} onClick={() => handleItemClick(item._id, popupType)} className='admin_detail_data'>
+                                        <div>
+  {popupType === 'stories' ? (
+    <div>
+      <span className="space-before-author">{item.title}</span>
+      <span className="tilde">~</span>
+      <span className="author">{item.author}</span>
+    </div>
+  ) : popupType === 'characters' ? (
+    <div>
+      <span className="space-before-author">{item.name}</span>
+    </div>
+  ) : (
+    <span>{item.email}</span>
+  )}
+</div>
+
                                         <button
                                             className="delete-btn"
                                             onClick={(e) => {
@@ -197,6 +246,7 @@ const AdminDashboard = () => {
 
             {/* Popup for detail data */}
             {detailData && (
+                <div className='detail-data-parent'>
                 <div className="popup-story-details">
                     <div className="popup-content-story-details">
                         <h2>Detail View</h2>
@@ -242,6 +292,7 @@ const AdminDashboard = () => {
                         )}
                         <button onClick={() => setDetailData(null)} className="close-btn">Close Detail</button>
                     </div>
+                </div>
                 </div>
             )}
         </div>
