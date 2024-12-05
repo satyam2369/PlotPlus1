@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './AdminDashboard.css'; // Add custom styles for the dashboard and popups
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
     const [popupType, setPopupType] = useState("stories");
@@ -263,7 +263,7 @@ const AdminDashboard = () => {
                                 <p><strong>Genre:</strong> {detailData.categories}</p>
                                 <p><strong>Created At:</strong> {detailData.createdAt}</p>
                                 <p><strong>Cover Image:</strong></p>
-                                <img src={detailData.coverImage} alt="Cover Image" className="cover-image" />
+                                <img src={detailData.coverImage} alt="Cover-Images" className="cover-image" />
                             </div>
                         )}
                         {popupType === 'characters' && (
@@ -275,7 +275,7 @@ const AdminDashboard = () => {
                                 <p><strong>Character Image:</strong></p>
                                 <img
                                     src={`http://localhost:4000${detailData.charImage}`}
-                                    alt="Character Image"
+                                    alt="Character Images"
                                     style={{ maxWidth: '100%', height: 'auto', maxHeight: '300px', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
                                 />
 
