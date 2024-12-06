@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { Editor } from '@tinymce/tinymce-react';
 import { FaUpload } from 'react-icons/fa';
@@ -100,7 +100,6 @@ function Write() {
     const formData = new FormData();
     formData.append('coverImage', coverImage); // Add the image to the form data
 
-
     fetch(`http://localhost:4000/story/uploadStoryImages`, {
       method: 'POST',
       // headers: {
@@ -150,11 +149,25 @@ function Write() {
       .catch((error) => {
         console.error('Error:', error);
       });
-
-
-
-
   }
+
+  useEffect(() => {
+    fetch('http://localhost:4000/users/checkLogin', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("User data:", data); 
+        if (data) {
+          setAuthor(data.uid);
+        }
+    })
+    .catch(error => console.log('Error checking login:', error));
+}, []);
 
   const closePopup = () => {
     setShowPopup(false);
@@ -184,10 +197,6 @@ function Write() {
           <input type='text' className='write-input' name="title" onChange={handleTitle} required />
           <div className='parent-author-category'>
 
-            <div className='author-category-div1'>
-              <label className='write-label'>Name of the Author</label>
-              <input type='text' className='write-input' name="author" onChange={handleAuthor} required />
-            </div>
             <div className='author-category-div2'>
               <label className='write-label label-category'>Category</label>
               <Select className='write-input-category'
