@@ -22,11 +22,10 @@ function Navbar() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("User data:", data); // Check if profilePic exists in the data
+            console.log("User data:", data); 
             if (data) {
                 setUsername(data.name);
                 setUid(data.uid);
-                // setProfilePic(data.profilePic); // Ensure this is a valid URL
                 const formattedProfilePic = data.profilePic ? `http://localhost:4000/images/${data.profilePic}` : null;
             setProfilePic(formattedProfilePic);
             }
