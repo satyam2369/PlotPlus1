@@ -163,12 +163,16 @@ router.get('/logout', async function(req, res){
     res.json({ success: true });
 })
 
-router.post('/checkUsername', async function(req, res, next){
+router.post('/checkUsername', async function(req, res){
   const {name} = req.body;
   const check = await User.findOne({name});
 
   if(check) res.status(400).json({ message: "Username already exist!"});
   else res.json({ message: "Username is available"});
+})
+
+router.post('/getUsername', async function(req, res){
+  
 })
 
 router.post('/checkEmail', async function(req, res, next){
