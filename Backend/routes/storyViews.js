@@ -30,23 +30,23 @@ router.post('/saveStoryView', async (req, res) => {
 
 
 // Get all views for a specific story (by storyid)
-router.get('/getStoriesuwu/:storyid', async (req, res) => {
-  const { storyid } = req.params;
+// router.get('/getStoriesuwu/:storyid', async (req, res) => {
+//   const { storyid } = req.params;
 
-  try {
-    // Find all views related to the story
-    const views = await storyViews.find({ storyid });
+//   try {
+//     // Find all views related to the story
+//     const views = await storyViews.find({ storyid });
 
-    if (views.length === 0) {
-      return res.status(404).json({ message: 'No views found for this story' });
-    }
+//     if (views.length === 0) {
+//       return res.status(404).json({ message: 'No views found for this story' });
+//     }
 
-    res.json(views.length);
-  } catch (error) {
-    console.error('Error fetching story views:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+//     res.json(views.length);
+//   } catch (error) {
+//     console.error('Error fetching story views:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
 
 // Get all stories viewed by a specific user (by uid)
 router.get('/getStories/:uid', async (req, res) => {

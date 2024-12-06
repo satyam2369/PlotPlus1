@@ -93,7 +93,7 @@ function UserProfile({ userId }) {
     const renderContent = () => {
         switch (activeTab) {
             case 'storiesViewed':
-                return renderStories(storiesViewed);
+                return renderStories(stories);
             case 'yourStories':
                 return renderStories(yourStories);
             case 'charactersViewed':
@@ -149,7 +149,7 @@ function UserProfile({ userId }) {
             <div className="user-profile-content">{renderContent()}</div>
 
 
-            {stories.length > 0 ? (
+            {/* {stories.length > 0 ? (
   <ul className="user-profile-story-list">
     {stories.map((story, index) => (
       <li key={index} className="user-profile-story-card">
@@ -164,7 +164,7 @@ function UserProfile({ userId }) {
   </ul>
 ) : (
   <p className="user-profile-no-stories">No stories found for this user.</p>
-)}
+)} */}
 
             {/* {stories.length > 0 ? (
                 <ul className="user-profile-story-list">
