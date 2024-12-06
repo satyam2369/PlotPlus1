@@ -4,7 +4,6 @@ import './UserProfile.css'; // Import the CSS file
 
 function UserProfile({ userId }) {
     const location = useLocation();
-    const [stories, setStories] = useState([]);
     const [views, setViews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -27,11 +26,11 @@ function UserProfile({ userId }) {
                 fetchStoriesDetails(viewsData);
 
                 // Fetch Your Stories
-                // const yourStoriesResponse = await fetch(`http://localhost:4000/views/getStories/${location.state.uid}`);
-                // if (!yourStoriesResponse.ok) throw new Error('Failed to fetch your stories');
-                // const yourStoriesData = await yourStoriesResponse.json();
-                // console.log("your stories data:", yourStoriesData);
-                // setYourStories(yourStoriesData);
+                const yourStoriesResponse = await fetch(`http://localhost:4000/story/getstoriesbyuserid/${location.state.uid}`);
+                if (!yourStoriesResponse.ok) throw new Error('Failed to fetch your stories');
+                const yourStoriesData = await yourStoriesResponse.json();
+                console.log("your stories data:", yourStoriesData);
+                setYourStories(yourStoriesData);
 
                 // Fetch Characters Viewed
                 // const charactersResponse = await fetch(`http://localhost:4000/views/getCharacters/${location.state.uid}`);
@@ -53,7 +52,7 @@ function UserProfile({ userId }) {
                     return fetch(`http://localhost:4000/story/stories/${view.storyid}`).then(res => res.json());
                 });
                 const storiesData = await Promise.all(storiesPromises);
-                setStories(storiesData);
+                setStoriesViewed(storiesData);
             } catch (error) {
                 setError(error.message);
                 console.error("Error fetching stories details:", error);
@@ -93,7 +92,7 @@ function UserProfile({ userId }) {
     const renderContent = () => {
         switch (activeTab) {
             case 'storiesViewed':
-                return renderStories(stories);
+                return renderStories(storiesViewed);
             case 'yourStories':
                 return renderStories(yourStories);
             case 'charactersViewed':
