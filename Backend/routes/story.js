@@ -168,6 +168,18 @@ router.get('/stories/:id', async (req, res) => {
   }
 });
 
+router.get('/getstoriesbyuserid/:id', async (req, res) => {
+  try {
+    const story = await storyModel.find({author: req.params.id});
+    if (!story) {
+      return res.status(404).json({ message: 'Story not found' });
+    }
+    res.json(story);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 // Get story by ID
 router.get('/:id', async (req, res) => {
