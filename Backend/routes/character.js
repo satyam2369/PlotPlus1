@@ -31,7 +31,8 @@ router.post('/charUpload', upload.single('charImage'), async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       genre: req.body.genre,
-      charImage: imagePath
+      charImage: imagePath,
+      authorId: req.body.authorId,
     });
 
     console.log('Character created:', createdCharacter);
@@ -65,6 +66,17 @@ router.delete('/delete/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const character = await charModel.findById(req.params.id);
+    if (!character) {
+      return res.status(404).json({ message: 'Character not found' });
+    }
+    res.json(character);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+router.get('/characterbyuid/:id', async (req, res) => {
+  try {
+    const character = await charModel.find({authorId : req.params.id});
     if (!character) {
       return res.status(404).json({ message: 'Character not found' });
     }

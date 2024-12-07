@@ -9,7 +9,7 @@ const Upload = () => {
   const [genre, setGenre] = useState('');
   const [charImage, setCharImage] = useState('');
   const [imagePreview, setImagePreview] = useState(null);  // State to store image preview URL
-
+  const [authorId, setAuthorId] = useState("");
   const [Data, setData] = useState([]);
 
   const handleName = (e) => {
@@ -32,6 +32,24 @@ const Upload = () => {
     setImagePreview(null);  // Remove the preview
   };
 
+  useEffect(() => {
+    fetch('http://localhost:4000/users/checkLogin', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("User data:", data); 
+        if (data) {
+          setAuthorId(data.uid);
+        }
+    })
+    .catch(error => console.log('Error checking login:', error));
+}, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -40,6 +58,7 @@ const Upload = () => {
     formData.append('description', description);
     formData.append('genre', genre);
     formData.append('charImage', charImage);
+    formData.append('authorId', authorId);
   
     // Handle form submission logic
     fetch(`http://localhost:4000/character/charUpload`, {
