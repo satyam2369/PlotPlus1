@@ -8,6 +8,8 @@ import './Write.css';
 function Write() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [authorId, setAuthorId] = useState('');
+
   const [categories, setCategory] = useState('');
   const [coverImage, setCoverImage] = useState('');
   const [coverImagePreview, setCoverImagePreview] = useState(null); // For preview
@@ -93,7 +95,7 @@ function Write() {
   const submitStory = (e) => {
     e.preventDefault();
     const story = {
-      title, author, categories, 'coverImage': saveImage, content
+      title, author,authorId, categories, 'coverImage': saveImage, content
     }
     console.log(story);
 
@@ -163,7 +165,8 @@ function Write() {
     .then(data => {
         console.log("User data:", data); 
         if (data) {
-          setAuthor(data.uid);
+          setAuthorId(data.uid);
+          setAuthor(data.name);
         }
     })
     .catch(error => console.log('Error checking login:', error));

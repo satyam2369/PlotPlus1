@@ -12,6 +12,10 @@ const storySchema = new Schema({
         required: true,
         trim: true,
     },
+    authorId: {
+        type: String,
+        trim: true,
+    },
     categories
     : {
         type: [String],  // Array of category strings

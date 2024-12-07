@@ -33,11 +33,11 @@ function UserProfile({ userId }) {
                 setYourStories(yourStoriesData);
 
                 // Fetch Characters Viewed
-                // const charactersResponse = await fetch(`http://localhost:4000/views/getCharacters/${location.state.uid}`);
-                // if (!charactersResponse.ok) throw new Error('Failed to fetch characters viewed');
-                // const charactersData = await charactersResponse.json();
-                // console.log("characters data:", charactersData);
-                // setCharactersViewed(charactersData);
+                const charactersResponse = await fetch(`http://localhost:4000/character/characterbyuid/${location.state.uid}`);
+                if (!charactersResponse.ok) throw new Error('Failed to fetch characters viewed');
+                const charactersData = await charactersResponse.json();
+                console.log("characters data:", charactersData);
+                setCharactersViewed(charactersData);
                 
             } catch (error) {
                 setError(error.message);
@@ -141,7 +141,7 @@ function UserProfile({ userId }) {
                     className={`user-profile-tab ${activeTab === 'charactersViewed' ? 'active' : ''}`}
                     onClick={() => setActiveTab('charactersViewed')}
                 >
-                    Characters Viewed
+                    Your Characters
                 </button>
             </div>
 

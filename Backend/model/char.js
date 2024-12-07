@@ -6,6 +6,9 @@ const charSchema = new Schema({
         type: String,
         trim: true,
     },
+    authorId : {
+        type: String,
+    },
     description: {
         type: String,
     },
