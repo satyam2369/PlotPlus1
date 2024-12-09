@@ -31,7 +31,6 @@ const Carousal = () => {
         img : image,
         title:"The Lighthouse Keeper's Secret",
         dis:"On a rugged cliff overlooking the endless expanse of the sea stood an old lighthouse. Its weathered stones had withstood countless storms, guiding sailors safely to shore with its unwavering beam. The townspeople spoke of it with a mix of reverence and mystery, for no one had ever seen the lighthouse keeper who maintained it."
-
     },
   ];
 

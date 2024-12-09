@@ -131,14 +131,14 @@ function SignUp() {
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        navigate('/login');
-      })
-      .catch(e => {
-        console.log(e);
-      });
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          navigate('/login');
+        })
+        .catch(e => {
+          console.log(e);
+        });
 
       setUserName("");
       setEmail("");
@@ -151,94 +151,97 @@ function SignUp() {
   return (
     <div className='SignUp'>
       <h1 className='signup_title'>Exciting Stories Await! Join PlotPlus</h1>
-      <div className='wrapper_signup'>
-        <div className='left_signup'>
-          <div className='signup_pic'>
-            <img src={signup} alt='signup' />
+      <div className='signup_parent'>
+        <div className='wrapper_signup'>
+          <div className='left_signup'>
+            <div className='signup_pic'>
+              <img src={signup} alt='signup' />
+            </div>
           </div>
-        </div>
-        <div className='center'>
-          <div className='line' />
-        </div>
-        <div className='right_signup'>
-          {/* Signup Form */}
-          <form onSubmit={handleForm}>
-            <label>
-              <input
-                type='text'
-                className="input_signup"
-                placeholder='Name'
-                name='username'
-                onChange={handleChange}
-                value={username}
-              />
-            </label>
-            {errors.username && <span className='error'>{errors.username}</span>}
-            <br />
+          <div className='center'>
+            {/* <div className='line' /> */}
+          </div>
+          <div className='right_signup'>
+            {/* Signup Form */}
+            <form onSubmit={handleForm}>
+              <label>
+                <input
+                  type='text'
+                  className="input_signup"
+                  placeholder='Name'
+                  name='username'
+                  onChange={handleChange}
+                  value={username}
+                />
+              </label>
+              {errors.username && <span className='error'>{errors.username}</span>}
+              <br />
+              <div className='profile-pic-parent'>
+                <label>Profile Image</label>
+                <label className='custom-upload-button' htmlFor="profilePic">
+                  <FaUpload className="upload-icon" />
+                  Upload
+                </label>
+                <input
+                  id="profilePic"
+                  type="file"
+                  name="profilePic"
+                  className="input_signup"
+                  onChange={handleProfilePicChange}
+                  style={{ display: 'none' }}
+                />
+                {errors.profilePic && <span className='error'>{errors.profilePic}</span>}
+              </div>
+              <br />
 
-            <label>Profile Image</label>
-            <label className='custom-upload-button' htmlFor="profilePic">
-              <FaUpload className="upload-icon" />
-              Upload
-            </label>
-            <input
-              id="profilePic"
-              type="file"
-              name="profilePic"
-              className="input_signup"
-              onChange={handleProfilePicChange}
-              style={{ display: 'none' }}
-            />
-            {errors.profilePic && <span className='error'>{errors.profilePic}</span>}
-            <br />
+              <label>
+                <input
+                  type='text'
+                  className="input_signup"
+                  placeholder='email@gmail.com'
+                  name='email'
+                  onChange={handleChange1}
+                  value={email}
+                />
+              </label>
+              {errors.email && <span className='error'>{errors.email}</span>}
+              <br />
 
-            <label>
-              <input
-                type='text'
-                className="input_signup"
-                placeholder='email@gmail.com'
-                name='email'
-                onChange={handleChange1}
-                value={email}
-              />
-            </label>
-            {errors.email && <span className='error'>{errors.email}</span>}
-            <br />
+              <label>
+                <input
+                  type='password'
+                  className="input_signup"
+                  placeholder='Password'
+                  name='password'
+                  onChange={handleChange2}
+                  value={password}
+                />
+              </label>
+              {errors.password && <span className='error'>{errors.password}</span>}
+              <br />
 
-            <label>
-              <input
-                type='password'
-                className="input_signup"
-                placeholder='Password'
-                name='password'
-                onChange={handleChange2}
-                value={password}
-              />
-            </label>
-            {errors.password && <span className='error'>{errors.password}</span>}
-            <br />
+              <label>
+                <input
+                  type='password'
+                  className="input_signup"
+                  placeholder='Confirm Password'
+                  name='confirmPassword'
+                  onChange={handleChange3}
+                  value={confirmPassword}
+                />
+              </label>
+              {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
+              <br />
 
-            <label>
-              <input
-                type='password'
-                className="input_signup"
-                placeholder='Confirm Password'
-                name='confirmPassword'
-                onChange={handleChange3}
-                value={confirmPassword}
-              />
-            </label>
-            {errors.confirmPassword && <span className='error'>{errors.confirmPassword}</span>}
-            <br />
+              <input className='submit-btn2 color-blue2' type="submit" value="SUBMIT" />
+            </form>
 
-            <input className='submit-btn2 color-blue2' type="submit" value="SUBMIT" />
-          </form>
-
-          <p className='signup-lastLine'>Been Here Before?{' '}
-            <Link to="/login" className="login-link">
-              Log in and Continue Your Story!
-            </Link>
-          </p>
+            <p className='signup-lastLine'>Been Here Before?{' '}
+              <Link to="/login" className="login-link">
+                Log in and Continue Your Story!
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
