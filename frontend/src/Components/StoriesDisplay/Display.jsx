@@ -34,6 +34,12 @@ function Display() {
       
       const location = useLocation();
       const story = location.state.story;
+      
+      // if (!story) {
+      //   return <div>Story not found.</div>; // Handle case where story data is not passed
+      // }
+
+      
 useEffect(() => {
   if (uid && story) {
     // Prepare the POST request to save the story view
@@ -107,7 +113,10 @@ useEffect(() => {
       <h1 className="story-title">{story.title}</h1>
       <img src={story.coverImage} alt={story.title} className="story-cover-image" />
       <p className="story-author">by {story.author}</p>
-      <p className="story-category">Category: {story.categories.join(', ')}</p>
+     <p className="story-category">
+  Category: {story?.categories ? story.categories.join(', ') : 'N/A'}
+</p>
+
       <div className="story-content" dangerouslySetInnerHTML={{ __html: story.content }} />
 
        {/* Comment Button */}
@@ -136,9 +145,13 @@ useEffect(() => {
     <p>No comments yet. Be the first to comment!</p>
   ) : (
     comments.map((comment, index) => (
-      <div key={index} className="comment">
+      <div key={index} className="commentss">
+        <div className='comment-author'> 
         <p><strong>{comment.author}</strong>:</p>
+        </div>
+        <div className='comment-text'> 
         <p>{comment.text}</p>
+        </div>
       </div>
     ))
   )}

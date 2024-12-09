@@ -1,53 +1,65 @@
 .login {
     margin-top: 12vh;
-    height: calc(80vh - 60px);
+    height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .Back_to_home {
     position: absolute;
-    top: 4%;
-    left: 5%;
+    top: 2%;
+    left: 2%;
     text-decoration: none;
     border: 2px solid rgb(84, 66, 124);
-    padding: 0.5%;
+    padding: 5px;
     border-radius: 50%;
     font-weight: 400;
+    color: #333;
+    display: flex;
+    align-items: center;
 }
 
-.Back_to_home :hover {
+.Back_to_home:hover {
     color: black;
+    border-color: #4c74af;
 }
 
 .back_icon {
-    margin-right: 10%;
-    /* margin-bottom: 0; */
+    margin-right: 5px;
 }
 
 .wrapper {
-    width: 60%;
-    height: 90%;
+    width: 70%;
+    max-width: 1200px;
+    height: auto;
     box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
     display: flex;
+    flex-direction: column;
     align-items: center;
     border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .left, .right {
-    flex: 1;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 20px;
+    padding-top: 3%;
 }
 
 .center {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    margin: 20px 0;
 }
 
 .or {
@@ -60,27 +72,24 @@
 }
 
 .line {
-    width: 0.5px;
-    height: 70%;
+    width: 1px;
+    height: 30px;
     background-color: lightgray;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: -1;
+    margin: 0 10px;
 }
 
 .login_button {
-    width: 150px;
-    padding: 15px 25px;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
     border-radius: 5px;
     color: white;
     display: flex;
     align-items: center;
     font-weight: bold;
     margin-bottom: 20px;
+    justify-content: center;
+    text-align: center;
 }
 
 .google {
@@ -99,14 +108,15 @@
     margin-right: 10px;
 }
 
-/* input- textbox styling */
 .input_login {
-    width: 200px;
-    padding: 15px 20px;
-    margin-bottom: 25px;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    margin-bottom: 20px;
     border: 2px solid #ccc;
     border-radius: 8px;
-    transition: all 0.3s ease; /* Add smooth transitions */
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .input_login:hover {
@@ -121,60 +131,26 @@
 .input_login::placeholder {
     color: #A9A9A9;
     font-style: italic;
-    transition: color 0.3s ease, font-style 0.3s ease; /* Smooth transitions for placeholder */
 }
 
 .Login_text {
-    margin-bottom: 0;
-    margin-top: 0; 
-    padding-bottom: 0;
-}
-
-/* Add a subtle animation - pulsing animation */
-@keyframes subtlePulse {
-    0% {
-        transform: scale(1); /* no scaling applied */
-    }
-    50% {
-        transform: scale(1.03);
-    }
-    100% {
-        transform: scale(1); /* element returns to its original size*/
-    }
-}
-
-.input_login:disabled {
-    background-color: #F5F5F5;
-    color: #A9A9A9;
-}
-
-
-/* submit button styling */
-.submit {
-    margin: 10%;
     text-align: center;
+    margin-top: 20px;
 }
 
 .submit-btn {
-    width: 180px;
+    width: 100%;
+    max-width: 300px;
     font-size: 16px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
-    margin: 16px;
-    height: 55px;
+    padding: 15px;
     text-align: center;
     border: none;
     background-size: 300% 100%;
     border-radius: 50px;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-}
-
-.submit-btn:focus {
-    outline: none;
+    transition: all 0.4s ease-in-out;
 }
 
 .color-blue {
@@ -184,13 +160,67 @@
 
 .color-blue:hover {
     background-position: 100% 0;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
 }
 
 .login_title {
-    position: absolute;
-    top: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+    .wrapper {
+        flex-direction: row;
+        padding: 40px;
+    }
+
+    .left, .right {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .line {
+        height: 70%;
+    }
+
+    .login_title {
+        font-size: 2rem;
+    }
+
+    .Back_to_home {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+    }
+
+    .login_button {
+        margin-bottom: 15px;
+    }
+
+    .login_title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login_title {
+        font-size: 1.5rem;
+    }
+
+    .Back_to_home {
+        font-size: 14px;
+    }
+
+    .or {
+        font-size: 12px;
+    }
+
+    .input_login {
+        padding: 10px;
+    }
 }
