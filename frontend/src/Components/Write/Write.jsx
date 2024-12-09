@@ -234,7 +234,7 @@ function Write() {
           <label className='write-label' >Story Content </label>
 
           <Editor
-            apiKey="3vb0t4chzjqi9du3vs8ww5y1rqpvo364ay0p8a95lvzaw1kk" // TinyMCE API key
+            apiKey="ar0gosgtkn6x57rgoctzt5c7cz3ozlro5pj4c55catih6sbw" // TinyMCE API key
             value={content}
             onEditorChange={handleEditorChange}
             init={{

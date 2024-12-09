@@ -78,8 +78,9 @@ function UserProfile({ userId }) {
                         <Link to="/story" state={{ story }}>
                             <h4 className="user-profile-story-title">{story.title}</h4>
                             <p className="user-profile-story-content">
-                                {story.content.replace(/<\/?[^>]+(>|$)/g, '').slice(0, 100)}...
-                            </p>
+  {story.content ? story.content.replace(/<\/?[^>]+(>|$)/g, '').slice(0, 100) : 'No content available. Story might have been deleted'}
+</p>
+
                         </Link>
                     </li>
                 ))}
