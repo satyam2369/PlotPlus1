@@ -22,12 +22,15 @@ require('./routes/passport'); // Load the Passport config
 
 // var taskRouter = require('./routes/task')
 var app = express();
-const cors = require("cors")
+const cors = require("cors");
+// Allow all origins
 const corsOptions = {
-  origin: 'https://plotplus1.onrender.com/', // Your frontend URL
+  origin: '*', // Enables all origins
   credentials: true, // Enable sending of cookies
 };
+
 app.use(cors(corsOptions));
+
 
 
 
