@@ -23,14 +23,19 @@ require('./routes/passport'); // Load the Passport config
 // var taskRouter = require('./routes/task')
 var app = express();
 const cors = require("cors");
-// Allow all origins
+
 const corsOptions = {
-  origin: 'https://preeminent-marzipan-d964a3.netlify.app/', // Enables all origins
-  credentials: true, // Enable sending of cookies
+  origin: (origin, callback) => {
+    if (origin && origin.startsWith('https://preeminent-marzipan-d964a3.netlify.app')) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block the request
+    }
+  },
+  credentials: true, // Allow cookies
 };
 
 app.use(cors(corsOptions));
-
 
 
 
