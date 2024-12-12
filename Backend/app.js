@@ -24,7 +24,7 @@ require('./routes/passport'); // Load the Passport config
 var app = express();
 const cors = require("cors")
 const corsOptions = {
-  origin: 'https://plotplus1.onrender.com/', // Your frontend URL
+  origin: 'http://localhost:4000/', // Your frontend URL
   credentials: true, // Enable sending of cookies
 };
 app.use(cors(corsOptions));

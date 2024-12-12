@@ -102,7 +102,7 @@ function Write() {
     const formData = new FormData();
     formData.append('coverImage', coverImage); // Add the image to the form data
 
-    fetch(`https://plotplus1.onrender.com/story/uploadStoryImages`, {
+    fetch(`http://localhost:4000/story/uploadStoryImages`, {
       method: 'POST',
       // headers: {
       //   "Content-Type" : "multipart/form-data"
@@ -122,7 +122,7 @@ function Write() {
       story.coverImage = data.location;
 
       // API call to submit the story
-      fetch(`https://plotplus1.onrender.com/story/uploadStory`, {
+      fetch(`http://localhost:4000/story/uploadStory`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -154,7 +154,7 @@ function Write() {
   }
 
   useEffect(() => {
-    fetch('https://plotplus1.onrender.com/users/checkLogin', {
+    fetch('http://localhost:4000/users/checkLogin', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -255,7 +255,7 @@ function Write() {
 
 
               automatic_uploads: true,
-              images_upload_url: 'https://plotplus1.onrender.com/story/uploadStoryImages', // Your existing image upload route
+              images_upload_url: 'http://localhost:4000/story/uploadStoryImages', // Your existing image upload route
               images_reuse_filename: true, // Reuse filenames on the server
 
               images_file_types: "jpeg,jpg",
@@ -264,7 +264,7 @@ function Write() {
                 let formData = new FormData();
                 formData.append('file', blobInfo.blob(), blobInfo.filename());
 
-                fetch('https://plotplus1.onrender.com/story/uploadStoryImages', {
+                fetch('http://localhost:4000/story/uploadStoryImages', {
                   method: 'POST',
                   body: formData,
                 })

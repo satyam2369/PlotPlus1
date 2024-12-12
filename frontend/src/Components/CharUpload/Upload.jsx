@@ -33,7 +33,7 @@ const Upload = () => {
   };
 
   useEffect(() => {
-    fetch('https://plotplus1.onrender.com/users/checkLogin', {
+    fetch('http://localhost:4000/users/checkLogin', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const Upload = () => {
     formData.append('authorId', authorId);
   
     // Handle form submission logic
-    fetch(`https://plotplus1.onrender.com/character/charUpload`, {
+    fetch(`http://localhost:4000/character/charUpload`, {
       method: 'POST',
       body: formData,  // Automatically sets the appropriate headers for file uploads
     })
@@ -81,7 +81,7 @@ const Upload = () => {
 
 
 useEffect(() => {
-  fetch("https://plotplus1.onrender.com/character/allCharacter")
+  fetch("http://localhost:4000/character/allCharacter")
     .then((response) => response.json())
     .then((data) => {
       setData(data);

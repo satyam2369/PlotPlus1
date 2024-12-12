@@ -16,7 +16,7 @@ function UserProfile({ userId }) {
     useEffect(() => {
         const fetchViews = async () => {
             try {
-                const response = await fetch(`https://plotplus1.onrender.com/views/getStories/${location.state.uid}`);
+                const response = await fetch(`http://localhost:4000/views/getStories/${location.state.uid}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch views');
                 }
@@ -26,14 +26,14 @@ function UserProfile({ userId }) {
                 fetchStoriesDetails(viewsData);
 
                 // Fetch Your Stories
-                const yourStoriesResponse = await fetch(`https://plotplus1.onrender.com/story/getstoriesbyuserid/${location.state.uid}`);
+                const yourStoriesResponse = await fetch(`http://localhost:4000/story/getstoriesbyuserid/${location.state.uid}`);
                 if (!yourStoriesResponse.ok) throw new Error('Failed to fetch your stories');
                 const yourStoriesData = await yourStoriesResponse.json();
                 console.log("your stories data:", yourStoriesData);
                 setYourStories(yourStoriesData);
 
                 // Fetch Characters Viewed
-                const charactersResponse = await fetch(`https://plotplus1.onrender.com/character/characterbyuid/${location.state.uid}`);
+                const charactersResponse = await fetch(`http://localhost:4000/character/characterbyuid/${location.state.uid}`);
                 if (!charactersResponse.ok) throw new Error('Failed to fetch characters viewed');
                 const charactersData = await charactersResponse.json();
                 console.log("characters data:", charactersData);
@@ -49,7 +49,7 @@ function UserProfile({ userId }) {
         const fetchStoriesDetails = async (views) => {
             try {
                 const storiesPromises = views.map(view => {
-                    return fetch(`https://plotplus1.onrender.com/story/stories/${view.storyid}`).then(res => res.json());
+                    return fetch(`http://localhost:4000/story/stories/${view.storyid}`).then(res => res.json());
                 });
                 const storiesData = await Promise.all(storiesPromises);
                 setStoriesViewed(storiesData);
@@ -199,7 +199,7 @@ export default UserProfile;
 //     useEffect(() => {
 //         const fetchViews = async () => {
 //             try {
-//                 const response = await fetch(https://plotplus1.onrender.com/views/getStories/${location.state.uid});
+//                 const response = await fetch(http://localhost:4000/views/getStories/${location.state.uid});
 //                 if (!response.ok) {
 //                     throw new Error('Failed to fetch views');
 //                 }
@@ -216,7 +216,7 @@ export default UserProfile;
 //         const fetchStoriesDetails = async (views) => {
 //             try {
 //                 const storiesPromises = views.map(view => {
-//                     return fetch(https://plotplus1.onrender.com/story/stories/${view.storyid}).then(res => res.json());
+//                     return fetch(http://localhost:4000/story/stories/${view.storyid}).then(res => res.json());
 //                 });
 //                 const storiesData = await Promise.all(storiesPromises);
 //                 setStories(storiesData);

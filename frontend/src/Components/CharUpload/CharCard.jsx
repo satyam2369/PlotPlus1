@@ -6,7 +6,7 @@ function CharacterCard({ charImage, name, description, genre, createdAt }) {
     <div className="character-card">
       <div className="character-image">
         {/* <img src={image} alt={name} /> */}
-        <img src={`https://plotplus1.onrender.com/`+charImage} alt="char_img" />
+        <img src={`http://localhost:4000/`+charImage} alt="char_img" />
       </div>
       <div className="character-details">
         <h2 className="character-name">{name}</h2>

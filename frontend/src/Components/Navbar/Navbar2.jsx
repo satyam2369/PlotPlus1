@@ -16,7 +16,7 @@ function Navbar2() {
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await fetch('https://plotplus1.onrender.com/users/checkLogin', {
+                const response = await fetch('http://localhost:4000/users/checkLogin', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function Navbar2() {
 
 
     const handleLogout = () => {
-        fetch('https://plotplus1.onrender.com/users/logout', {
+        fetch('http://localhost:4000/users/logout', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

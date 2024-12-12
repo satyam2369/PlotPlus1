@@ -32,7 +32,7 @@ router.post('/uploadStoryImages', upload.single('coverImage'), (req, res) => {
           return res.status(400).json({ error: 'No file uploaded' });
       }
       // Construct the image URL based on where the image was saved
-      const imageUrl = `https://plotplus1.onrender.com/images/${req.file.filename}`;
+      const imageUrl = `http://localhost:4000/images/${req.file.filename}`;
 
       // Send back the image URL to the client
       res.json({ location: imageUrl });
@@ -73,7 +73,7 @@ router.put('/approve/:id', async (req, res) => {
 //         return res.status(500).json({ error: 'Internal server error' });
 //       }
 
-//       const imageUrl = `https://plotplus1.onrender.com/images/${filename}`;
+//       const imageUrl = `http://localhost:4000/images/${filename}`;
       
 //       // **Save the image URL in the database** (assuming you have a model for images)
 //       const newImage = new ImageModel({ path: imageUrl, filename: req.file.originalname });
@@ -116,7 +116,7 @@ router.put('/approve/:id', async (req, res) => {
 //         return res.status(500).json({ error: 'Internal server error' });
 //       }
 
-//       const imageUrl = `https://plotplus1.onrender.com/images/${filename}`;
+//       const imageUrl = `http://localhost:4000/images/${filename}`;
 //       res.json({ location: imageUrl });
 //     });
 //   } catch (error) {

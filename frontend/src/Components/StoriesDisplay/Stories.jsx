@@ -17,7 +17,7 @@ function Stories() {
 
   useEffect(() => {
     // Fetch stories from the backend when component mounts
-    fetch('https://plotplus1.onrender.com/story/getStories')
+    fetch('http://localhost:4000/story/getStories')
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error: ${res.status} - ${res.statusText}`);

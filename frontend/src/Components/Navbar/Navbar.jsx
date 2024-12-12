@@ -13,7 +13,7 @@ function Navbar() {
     };
 
     useEffect(() => {
-        fetch('https://plotplus1.onrender.com/users/checkLogin', {
+        fetch('http://localhost:4000/users/checkLogin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ function Navbar() {
             if (data) {
                 setUsername(data.name);
                 setUid(data.uid);
-                const formattedProfilePic = data.profilePic ? `https://plotplus1.onrender.com/images/${data.profilePic}` : null;
+                const formattedProfilePic = data.profilePic ? `http://localhost:4000/images/${data.profilePic}` : null;
             setProfilePic(formattedProfilePic);
             }
         })
@@ -35,7 +35,7 @@ function Navbar() {
     
 
     const handleLogout = () => {
-        fetch('https://plotplus1.onrender.com/users/logout', {
+        fetch('http://localhost:4000/users/logout', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
