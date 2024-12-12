@@ -38,7 +38,7 @@ function SignUp() {
 
   const checkUsernameAvailability = async (username) => {
     try {
-      const response = await fetch(`http://localhost:4000/users/checkUsername`, {
+      const response = await fetch(`https://plotplus1.onrender.com/users/checkUsername`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -61,7 +61,7 @@ function SignUp() {
 
   const checkEmailAvailability = async (email) => {
     try {
-      const response = await fetch(`http://localhost:4000/users/checkEmail`, {
+      const response = await fetch(`https://plotplus1.onrender.com/users/checkEmail`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -127,7 +127,7 @@ function SignUp() {
       formData.append("password", password);
       if (profilePic) formData.append("profilePic", profilePic);
 
-      fetch(`http://localhost:4000/users/signup`, {
+      fetch(`https://plotplus1.onrender.com/users/signup`, {
         method: 'POST',
         body: formData
       })

@@ -13,7 +13,7 @@ function Display() {
 
 
   useEffect(() => {
-    fetch('http://localhost:4000/users/checkLogin', {
+    fetch('https://plotplus1.onrender.com/users/checkLogin', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function Display() {
 useEffect(() => {
   if (uid && story) {
     // Prepare the POST request to save the story view
-    fetch('http://localhost:4000/views/saveStoryView', {
+    fetch('https://plotplus1.onrender.com/views/saveStoryView', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ useEffect(() => {
       // Fetch comments for the story
       useEffect(() => {
         if (story) {
-          fetch(`http://localhost:4000/comments/${story._id}`)
+          fetch(`https://plotplus1.onrender.com/comments/${story._id}`)
             .then(response => {
               if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -84,7 +84,7 @@ useEffect(() => {
   // Handle new comment submission
   const handleCommentSubmit = () => {
     if (newComment.trim()) {
-      fetch('http://localhost:4000/comments/add', {
+      fetch('https://plotplus1.onrender.com/comments/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
