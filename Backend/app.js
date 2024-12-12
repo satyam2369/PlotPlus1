@@ -25,8 +25,18 @@ var app = express();
 const cors = require("cors");
 // Allow all origins
 const corsOptions = {
-  origin: 'https://preeminent-marzipan-d964a3.netlify.app/', // Enables all origins
-  credentials: true, // Enable sending of cookies
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      'https://preeminent-marzipan-d964a3.netlify.app',
+      'http://localhost:3000' // Add localhost for testing
+    ];
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Enable cookies and headers
 };
 
 app.use(cors(corsOptions));
