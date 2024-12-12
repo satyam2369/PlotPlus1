@@ -17,11 +17,11 @@ const AdminDashboard = () => {
         try {
             let response;
             if (type === 'stories') {
-                response = await fetch('http://localhost:4000/story/getStories');
+                response = await fetch('https://plotplus1.onrender.com/story/getStories');
             } else if (type === 'characters') {
-                response = await fetch('http://localhost:4000/character/allCharacter');
+                response = await fetch('https://plotplus1.onrender.com/character/allCharacter');
             } else if (type === 'users') {
-                response = await fetch('http://localhost:4000/users/allUsers');
+                response = await fetch('https://plotplus1.onrender.com/users/allUsers');
             }
 
             if (!response.ok) {
@@ -49,11 +49,11 @@ const AdminDashboard = () => {
             try {
                 let response;
                 if (type === 'stories') {
-                    response = await fetch(`http://localhost:4000/story/delete/${id}`, { method: 'DELETE' });
+                    response = await fetch(`https://plotplus1.onrender.com/story/delete/${id}`, { method: 'DELETE' });
                 } else if (type === 'characters') {
-                    response = await fetch(`http://localhost:4000/character/delete/${id}`, { method: 'DELETE' });
+                    response = await fetch(`https://plotplus1.onrender.com/character/delete/${id}`, { method: 'DELETE' });
                 } else if (type === 'users') {
-                    response = await fetch(`http://localhost:4000/users/delete/${id}`, { method: 'DELETE' });
+                    response = await fetch(`https://plotplus1.onrender.com/users/delete/${id}`, { method: 'DELETE' });
                 }
     
                 if (response.ok) {
@@ -74,11 +74,11 @@ const AdminDashboard = () => {
         try {
             let response;
             if (type === 'stories') {
-                response = await fetch(`http://localhost:4000/story/${id}`);
+                response = await fetch(`https://plotplus1.onrender.com/story/${id}`);
             } else if (type === 'characters') {
-                response = await fetch(`http://localhost:4000/character/${id}`);
+                response = await fetch(`https://plotplus1.onrender.com/character/${id}`);
             } else if (type === 'users') {
-                response = await fetch(`http://localhost:4000/users/${id}`);
+                response = await fetch(`https://plotplus1.onrender.com/users/${id}`);
             }
 
             if (!response.ok) {
