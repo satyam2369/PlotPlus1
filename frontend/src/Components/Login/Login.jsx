@@ -23,7 +23,7 @@ function Login() {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/users/login', {
+            const response = await fetch('https://plotplus1.onrender.com/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ function Login() {
             <h1 className='login_title'>Choose a Login Method</h1>
             <div className='wrapper'>
                 <div className='left'>
-                    <div className='login_button google' onClick={() => window.location.href = 'http://localhost:4000/auth/google'}>
+                    <div className='login_button google' onClick={() => window.location.href = 'https://plotplus1.onrender.com/auth/google'}>
                         <img src={google} alt="google" className='icons' />
                         Google
                     </div>

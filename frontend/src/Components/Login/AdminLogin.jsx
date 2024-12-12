@@ -50,7 +50,7 @@ function AdminLogin() {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/admin/adminLogin', {
+            const response = await fetch('https://plotplus1.onrender.com/admin/adminLogin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
