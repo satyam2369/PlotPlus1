@@ -164,6 +164,7 @@ router.get('/logout', async function(req, res){
     res.clearCookie('uid', {
       httpOnly: true, 
       secure: true,
+      sameSite: 'none',
       path: '/' // Path where the cookie was originally set
     })
     res.json({ success: true });
