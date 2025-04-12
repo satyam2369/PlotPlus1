@@ -126,7 +126,12 @@ router.post('/login', async function (req, res, next) {
         const token = createToken({ name: user.name, uid:user._id, email:user.email, profilePic: user.profilePic });
         console.log("token ", token);
         // console.log("token id ", id);
-        res.cookie('uid', token, { httpOnly: true, credentials: true, sameSite: 'None'});
+        res.cookie('uid', token, { 
+          httpOnly: true, 
+          secure: true, 
+          sameSite: 'Lax',
+          path: '/'
+        });
         return res.json({ success: true, name: user.name });
       } else {
         return res.status(401).json({ success: false, message: 'Invalid email or password' });
