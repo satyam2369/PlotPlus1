@@ -115,7 +115,7 @@ router.post('/signup', upload.single('profilePic'),async function (req, res, nex
 
 // Login Route with password comparison
 router.post('/login', async function (req, res, next) {
-  try {
+  // try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
 
@@ -129,9 +129,10 @@ router.post('/login', async function (req, res, next) {
         res.cookie('uid', token, { 
           httpOnly: true, 
           secure: true, 
-          sameSite: 'Lax',
+          sameSite: 'none', // explicitly allow cross-site cookies
           path: '/'
         });
+        
         return res.json({ success: true, name: user.name });
       } else {
         return res.status(401).json({ success: false, message: 'Invalid email or password' });
@@ -139,9 +140,9 @@ router.post('/login', async function (req, res, next) {
     } else {
       return res.status(401).json({ success: false, message: 'Invalid email or password' });
     }
-  } catch (error) {
-    next(error);
-  }
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 
