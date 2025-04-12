@@ -163,7 +163,7 @@ router.get('/logout', async function(req, res){
     // Clear the cookie by name
     res.clearCookie('uid', {
       httpOnly: true, 
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       path: '/' // Path where the cookie was originally set
     })
     res.json({ success: true });
