@@ -26,7 +26,8 @@ const cors = require("cors");
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (origin && origin.startsWith('https://preeminent-marzipan-d964a3.netlify.app')) {
+    // All these URLs share the same origin (domain), so we can just check for the main domain
+    if (origin && origin === 'https://preeminent-marzipan-d964a3.netlify.app') {
       callback(null, true); // Allow the request
     } else {
       callback(new Error('Not allowed by CORS')); // Block the request
